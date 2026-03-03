@@ -68,11 +68,19 @@ before_script:
     - build
   variables:
     EXAMPLES: >
+      get-started/csi_send
+      get-started/csi_recv
+      get-started/csi_recv_router
+      esp-radar/console_test
       esp-radar/connect_rainmaker
       esp-crab/master_recv
       esp-crab/slave_recv
       esp-crab/slave_send
     EXAMPLE_TARGETS: |
+      get-started/csi_send: esp32 esp32s3 esp32s2 esp32c3 esp32c6 esp32c5 esp32c61
+      get-started/csi_recv: esp32 esp32s3 esp32s2 esp32c3 esp32c6 esp32c5 esp32c61
+      get-started/csi_recv_router: esp32 esp32s3 esp32s2 esp32c3 esp32c6 esp32c5 esp32c61
+      esp-radar/console_test: esp32 esp32s3 esp32s2 esp32c3 esp32c6 esp32c5 esp32c61
       esp-radar/connect_rainmaker: esp32s3 esp32s2 esp32c3 esp32c6 esp32c5 esp32c61
       esp-crab/master_recv: esp32c5
       esp-crab/slave_recv: esp32c5
@@ -86,6 +94,8 @@ build_idf_v5.4:
   variables:
     IDF_VERSION: "5.4"
     SUPPORTED_TARGETS: "esp32 esp32s3 esp32s2 esp32c3 esp32c6"
+    RUNNER_SCRIPT_TIMEOUT: "60m"
+  timeout: 2h
 
 build_idf_v5.5:
   extends: .build_template
@@ -93,6 +103,8 @@ build_idf_v5.5:
   variables:
     IDF_VERSION: "5.5"
     SUPPORTED_TARGETS: "esp32 esp32s3 esp32s2 esp32c3 esp32c6 esp32c5 esp32c61"
+    RUNNER_SCRIPT_TIMEOUT: "60m"
+  timeout: 2h
 
 push_master_to_github:
   stage: deploy
