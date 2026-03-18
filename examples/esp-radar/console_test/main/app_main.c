@@ -363,7 +363,7 @@ static void csi_data_print_task(void *arg)
             info->valid_len = info->valid_he_ltf_len + info->valid_stbc_he_ltf_len;
 #endif
         }
-        ESP_LOGI(TAG, "info->valid_len: %d", info->valid_len);
+        ESP_LOGD(TAG, "info->valid_len: %d", info->valid_len);
         if (info->valid_len == 0) {
             info->valid_len = valid_len;
 
